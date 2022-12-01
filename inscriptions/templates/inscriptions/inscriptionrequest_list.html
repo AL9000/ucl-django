@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Liste des demandes
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Liste des demandes</h1>
+
+    <div class="d-grid gap-2 my-2">
+      <a href="{% url 'inscriptions:create' %}" class="btn btn-primary">Faire une demande d'inscription</a>
+    </div>
+
+    {% if inscriptionrequest_list %}
+      <ul class="list-group">
+        {% for inscriptionrequest in inscriptionrequest_list %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'inscriptions:detail' inscriptionrequest.pk %}"
+              class="text-decoration-none"
+            >
+              {{ inscriptionrequest }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aucunes demandes :(</p>
+    {% endif %}
+  </div>
+{% endblock %}

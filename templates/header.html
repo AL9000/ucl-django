@@ -1,0 +1,13 @@
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <span class="fs-4">Gestion des inscriptions à l'UCL</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      {% url 'inscriptions:list' as inscription_list %}
+      <li class="nav-item"><a href="{% url 'inscriptions:list' %}" class="nav-link {% if request.path == inscription_list %}active{% endif %}" aria-current="page">Inscriptions</a></li>
+      <li class="nav-item"><a href="/admin" class="nav-link" aria-current="page">Admin</a></li>
+    </ul>
+  </header>
+</div>

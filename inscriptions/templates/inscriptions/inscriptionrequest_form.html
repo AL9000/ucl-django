@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if inscriptionrequest %}
+    Modification de la demande {{ inscriptionrequest }}
+  {% else %}
+    Création d'une nouvelle demande
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+
+    {% if inscriptionrequest %}
+      <h1>Modification de la demande {{ inscriptionrequest }}</h1>
+    {% else %}
+      <h1>Création d'une nouvelle demande</h1>
+    {% endif %}
+
+    <form action="" method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Soumettre" class="btn btn-primary btn-success"/>
+
+      {% if inscriptionrequest %}
+        <a href="{% url 'inscriptions:detail' inscriptionrequest.pk %}" class="btn btn-primary btn-danger">Annuler</a>
+      {% endif %}
+    </form>
+  </div>
+
+{% endblock %}

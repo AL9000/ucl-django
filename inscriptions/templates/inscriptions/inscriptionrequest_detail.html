@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ inscriptionrequest }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ inscriptionrequest }}</h1>
+    <a href="{% url 'inscriptions:update' inscriptionrequest.pk %}" class="btn btn-sm btn-warning">✎</a>
+
+    <p>Cette demande à étée réalisée pour
+      {% if inscriptionrequest.candidat.get_full_name %}
+        {{ inscriptionrequest.candidat.get_full_name }}
+      {% else %}
+        {{ inscriptionrequest.candidat.username }}
+      {% endif %}
+      ({{ inscriptionrequest.candidat.email }})</p>
+
+    <p>
+      Cette demande à étée réalisée pour les formations :
+    <ul>
+      {% for training in inscriptionrequest.trainings.all %}
+        <li>{{ training }}</li>
+      {% endfor %}
+    </ul>
+    </p>
+
+
+    <p>En date du {{ inscriptionrequest.date_creation }}</p>
+    <p>Cette demande est {{ inscriptionrequest.accepted|yesno:"acceptée,pas acceptée" }}</p>
+  </div>
+{% endblock %}

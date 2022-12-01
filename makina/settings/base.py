@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # our own apps
     "inscriptions.apps.InscriptionsConfig",
+    # third parties
+    "django_filters",
 ]
 
 MIDDLEWARE = [

@@ -10,5 +10,5 @@ urlpatterns = [
     path("create/", views.InscriptionRequestCreateView.as_view(), name="create"),
     path("<int:pk>/update/", views.InscriptionRequestUpdateView.as_view(), name="update"),
     path("search/", views.InscriptionRequestSearchView.as_view(), name="search"),
-    # path("search_function/", views.search_inscriptions, name="search"),
+    path("trainings/", views.CreateTraining.as_view(), name="create_training"),
 ]

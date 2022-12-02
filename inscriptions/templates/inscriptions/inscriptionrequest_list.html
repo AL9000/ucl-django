@@ -20,8 +20,13 @@
               href="{% url 'inscriptions:detail' inscriptionrequest.pk %}"
               class="text-decoration-none"
             >
-              {{ inscriptionrequest }}
+              {{ inscriptionrequest.candidat }}
             </a>
+            <ul>
+              {% for training in inscriptionrequest.trainings.all %}
+                <li>{{ training }}</li>
+              {% endfor %}
+            </ul>
           </li>
         {% endfor %}
       </ul>

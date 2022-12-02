@@ -18,7 +18,8 @@ class InscriptionRequestListView(ListView):
     model = InscriptionRequest
 
     def get_queryset(self):
-        return super().get_queryset().filter(accepted=False)
+        queryset = super().get_queryset()
+        return queryset.filter(accepted=False)
 
 
 class InscriptionRequestDetailView(DetailView):

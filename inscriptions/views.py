@@ -17,6 +17,9 @@ def home_view(request):
 class InscriptionRequestListView(ListView):
     model = InscriptionRequest
 
+    def get_queryset(self):
+        return super().get_queryset().filter(accepted=False)
+
 
 class InscriptionRequestDetailView(DetailView):
     model = InscriptionRequest
